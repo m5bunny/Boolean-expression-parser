@@ -4,7 +4,7 @@ E - equivalence
 I - implication
 C - conjuction
 D - disjunction
-n - negation
+N - negation
 
 
 
