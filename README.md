@@ -1,10 +1,10 @@
 # Boolean-expression-parser
 Expresion:
-E - equivalence
-I - implication
-C - conjuction
-D - disjunction
-N - negation
+E - equivalence,
+I - implication,
+C - conjuction,
+D - disjunction,
+N - negation;
 
 
 
