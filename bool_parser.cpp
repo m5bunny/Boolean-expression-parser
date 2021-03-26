@@ -167,12 +167,12 @@ int main()
 	bool p_vals[8]{ 0, 1, 0, 1, 0, 1, 0, 1 };
 	bool q_vals[8]{ 0, 0, 1, 1, 0, 0, 1, 1 };
 	bool r_vals[8]{ 0, 0, 0, 0, 1, 1, 1, 1 };
-	std::vector<int> false_connective_vals;
+	std::vector<int> false_expresion_vals;
 
 	bool is_tatology{ true };
 
 	std::string s;
-	cout << "Enter the connective:\n";
+	cout << "Enter the expresion:\n";
 	getline(cin, s);
 	set_stack(0, s);
 
@@ -193,7 +193,7 @@ int main()
 		if (*(data[0]) == false)
 		{
 			is_tatology = false;
-			false_connective_vals.push_back(i);
+			false_expresion_vals.push_back(i);
 		}
 	}
 
@@ -204,16 +204,16 @@ int main()
 	else
 	{
 		cout << "It's not true for:\n";
-		for (int i{}; i < false_connective_vals.size(); ++i)
+		for (int i{}; i < false_expresion_vals.size(); ++i)
 		{
 			if (var_counter >= 1)
 			{
-				cout << "p:" << p_vals[false_connective_vals[i]];
+				cout << "p:" << p_vals[false_expresion_vals[i]];
 				if (var_counter >= 2)
 				{
-					cout << ", q:" << q_vals[false_connective_vals[i]];
+					cout << ", q:" << q_vals[false_expresion_vals[i]];
 					if (var_counter == 3)
-						cout << ", r:" << r_vals[false_connective_vals[i]];
+						cout << ", r:" << r_vals[false_expresion_vals[i]];
 				}
 			}
 			cout << std::endl;
