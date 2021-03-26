@@ -6,6 +6,8 @@ C - conjuction
 D - disjunction
 n - negation
 
+
+
 You should enter the expersion without spaces, like that:
 Original expresion:
 [(p ∧ q) ⇒ r] ⇔ [p ⇒ (q ⇒ r)]
