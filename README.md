@@ -1,5 +1,5 @@
 # Boolean-expression-parser
-Expresion:
+Expresions:
 E - equivalence,
 I - implication,
 C - conjuction,
