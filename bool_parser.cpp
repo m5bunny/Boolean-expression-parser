@@ -73,7 +73,7 @@ bool p;
 bool q;
 bool r;
 
-int data_index = 0;
+int data_index{};
 std::string variables;
 int var_counter{};
 
@@ -88,7 +88,6 @@ bool find(std::string & s, char c)
 
 void set_stack(int put_index, std::string & s)
 {
-	using std::cin;
 	char c;
 	c = s[0];
 	s.erase(0, 1);
@@ -156,6 +155,9 @@ void set_stack(int put_index, std::string & s)
 		}
 		data[put_index] = &r;
 		break;
+	default:
+		std::cout << "You entered a wrong expresion!\n";
+		s.clear();
 	}
 }
 
@@ -172,52 +174,64 @@ int main()
 	bool is_tatology{ true };
 
 	std::string s;
-	cout << "Enter the expresion:\n";
-	getline(cin, s);
-	set_stack(0, s);
-
-	for (int i{}; i < pow(2, var_counter); ++i)
+	cout << "Enter the expresion (Q to exit):\n";
+	while (cin.peek() != 'Q')
 	{
-		if (var_counter >= 1)
+		getline(cin, s);
+		set_stack(0, s);
+		if (data.size() != 0 && functions_stack.size() != 0)
 		{
-			p = p_vals[i];
-			if (var_counter >= 2)
+			for (int i{}; i < pow(2, var_counter); ++i)
 			{
-				q = q_vals[i];
-				if (var_counter == 3)
-					r = r_vals[i];
-			}
-		}
-		for (int j = functions_stack.size() - 1; j >= 0; --j)
-			functions_stack[j].execute();
-		if (*(data[0]) == false)
-		{
-			is_tatology = false;
-			false_expresion_vals.push_back(i);
-		}
-	}
-
-	if (is_tatology)
-	{
-		cout << "It's tautology!\n";
-	}
-	else
-	{
-		cout << "It's not true for:\n";
-		for (int i{}; i < false_expresion_vals.size(); ++i)
-		{
-			if (var_counter >= 1)
-			{
-				cout << "p:" << p_vals[false_expresion_vals[i]];
-				if (var_counter >= 2)
+				if (var_counter >= 1)
 				{
-					cout << ", q:" << q_vals[false_expresion_vals[i]];
-					if (var_counter == 3)
-						cout << ", r:" << r_vals[false_expresion_vals[i]];
+					p = p_vals[i];
+					if (var_counter >= 2)
+					{
+						q = q_vals[i];
+						if (var_counter == 3)
+							r = r_vals[i];
+					}
+				}
+				for (int j = functions_stack.size() - 1; j >= 0; --j)
+					functions_stack[j].execute();
+				if (*(data[0]) == false)
+				{
+					is_tatology = false;
+					false_expresion_vals.push_back(i);
 				}
 			}
-			cout << std::endl;
+
+			if (is_tatology)
+			{
+				cout << "It's tautology!\n";
+			}
+			else
+			{
+				cout << "It's not true for:\n";
+				for (int i{}; i < false_expresion_vals.size(); ++i)
+				{
+					if (var_counter >= 1)
+					{
+						cout << "p:" << p_vals[false_expresion_vals[i]];
+						if (var_counter >= 2)
+						{
+							cout << ", q:" << q_vals[false_expresion_vals[i]];
+							if (var_counter == 3)
+								cout << ", r:" << r_vals[false_expresion_vals[i]];
+						}
+					}
+					cout << std::endl;
+				}
+			}
+			data.clear();
+			functions_stack.clear();
+			false_expresion_vals.clear();
+			data_index = 0;
+			variables.clear();
+			var_counter = 0;
 		}
+		cout << "Enter the expresion (Q to exit):\n";
 	}
 
 	return 0;
