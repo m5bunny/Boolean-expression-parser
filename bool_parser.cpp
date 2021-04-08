@@ -131,6 +131,7 @@ void set_stack(int put_index, std::string & s)
 		functions_stack.push_back(Function{ &negation, gi, put_index });
 		set_stack(gi[0], s);
 	}
+	break;
 	case 'p':
 		if (!find(variables, 'p'))
 		{
