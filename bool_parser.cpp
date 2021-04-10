@@ -172,12 +172,13 @@ int main()
 	bool r_vals[8]{ 0, 0, 0, 0, 1, 1, 1, 1 };
 	std::vector<int> false_expresion_vals;
 
-	bool is_tatology{ true };
+	bool is_tatology;
 
 	std::string s;
 	cout << "Enter the expresion (Q to exit):\n";
 	while (cin.peek() != 'Q')
 	{
+		is_tatology = true;
 		getline(cin, s);
 		set_stack(0, s);
 		if (data.size() != 0 && functions_stack.size() != 0)
